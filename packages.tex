@@ -1,0 +1,47 @@
+\chapter{Packages}
+\label{chap:packages}
+
+The \texttt{ntnuthesis} is built upon the standard \LaTeX\
+\texttt{report} class. All commands from the \texttt{report} class can
+be used, with the two exceptions of \verb+\subsubsection+ and
+\verb+\paragraph+. This is because there should only be three
+levels of headings according to the guidelines~\cite{NTNUMaster}. 
+It has been placed in a folder called \texttt{ntnuthesis} so that it does not
+clutter your work.  You should not change anything in \texttt{ntnuthesis}
+
+\section{Packages Used by ntnuthesis}
+\label{sec:packages}
+
+In addition to the \texttt{report} document class,
+\texttt{ntnuthesis} makes direct use of the following packages
+that must hence be present:
+\begin{description}
+	\item[geometry:] used for setting the sizes of the margins and
+  	headers.
+	\item[fontenc:] used with option \texttt{T1} for forcing the Cork font
+  	encoding (necessary for the Charter font).
+	\item[charter:] load Charter as the default font.
+	\item[euler:] load the Euler math fonts.
+	\item[bable:] for language handling.
+\end{description}
+
+\section{Other Relevant Packages}
+\label{sec:otherpackages}
+
+The author of a thesis might want to use a bunch of different packages
+to those described in Section~\ref{sec:packages} in order to have all features needed for their document. 
+In particular, it is advised to use the following:
+\begin{description}
+	\item[inputenc:] to allow \LaTeX\ to use more than 7-bit ASCII for its
+	  input. Most often, the option \texttt{latin1} will do.
+	\item[babel:] to load language specific strings. Reasonable options
+	  include \texttt{british}, \texttt{american}, \texttt{norsk} and
+	  \texttt{nynorsk}.
+	\item[graphicx:] to include graphics.
+	\item[hyperref:] this is a very nice package that makes cross links in
+	  pdf documents. Use with option \texttt{dvips} or \texttt{pdftex}
+	  in accordance with the driver that you use. Unfortunately, hyperref
+	  is not completely bugfree\dots
+\end{description}
+
+We have web pages as well~\cite{Bowling}, and now games like Halo~\cite{Halo}.

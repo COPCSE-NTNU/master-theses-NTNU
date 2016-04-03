@@ -1,0 +1,47 @@
+%% This document gives an example on how to use the ntnumasterthesis
+%% LaTeX document class.
+
+%% Use short name MACS MIS, CIMET, MTDMT, and if you are doing MMT or MIS  the language,  english or norwegian
+\documentclass[MACS,english,b5paper,twoside]{ntnuthesis/ntnuthesis}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}     % For utf8 encoded .tex files allows norwegian characters in the files. This can be dangerous if you change to a differnt editor.
+\usepackage[pdftex]{graphicx, hyperref}   % For cross references in pdf
+\usepackage{color}              % For colouring text 
+\hypersetup{colorlinks=true,     
+		linkcolor=blue,          % color of internal links (change box color with linkbordercolor)
+    citecolor=blue,        % color of links to bibliography
+    filecolor=blue,      % color of file links
+    urlcolor=blue           % color of external links
+		}
+\usepackage{csvsimple}  % for simple table reading and display
+\usepackage{url}
+
+\begin{document}
+
+\input{MastersThesisData} % this is the file which contains all the details about your thesis
+\makefrontpages % make the frontpages
+\input{MastersIntro}
+
+\tableofcontents
+
+\hypersetup{pageanchor=true}
+
+% Comment with a percent to remove figures or tables:
+\listoffigures
+\listoftables
+
+
+\include{introduction} % includes latex files from the same directory
+\include{packages} % could be called Methodology or methods or anyfile name 
+\include{structure} % could be results
+
+
+
+\bibliographystyle{ntnuthesis/ntnuthesis}
+\bibliography{MastersExample}
+
+\appendix
+\include{appendix}
+
+\end{document}
