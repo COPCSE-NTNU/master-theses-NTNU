@@ -753,7 +753,7 @@ Use $\backslash$setthesisyear\{<year>\} to set year.
     \let\footnoterule\relax
     \let \footnote \thanks
     \null\vfil
-    
+      \includegraphics[width=200pt]{ntnuthesis/hovedlogo_eng} \\    
     \vskip 125\p@
     \begin{center}%
       {\fontsize{30}{34}\selectfont \thesis@title}%
@@ -768,7 +768,6 @@ Use $\backslash$setthesisyear\{<year>\} to set year.
     \end{center}\par
     \vskip 3em
     \begin{center}%
-      %\includegraphics[width=300pt]{ntnuthesis/hovedlogo_eng} \\
 			\thesis@date\\
       \medskip
       \nmt@firstpagetext
