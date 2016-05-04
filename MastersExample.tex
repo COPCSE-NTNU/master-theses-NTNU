@@ -19,6 +19,19 @@
 \usepackage{csvsimple}  % for simple table reading and display
 \usepackage{url}
 
+% Set to true ONLY if using Harvard citation style
+\newboolean{HarvardCitations}
+\setboolean{HarvardCitations}{true} % false for computer science, true for interaction design and harvard style
+
+
+\ifthenelse{\boolean{HarvardCitations}}{%
+	\usepackage{natbib} % for Harvard names as citations.
+}{%
+	\usepackage[numbers]{natbib} % for Vancover numbers in bibliography
+}
+
+
+
 \begin{document}
 
 \input{MastersThesisData} % this is the file which contains all the details about your thesis
@@ -39,8 +52,12 @@
 \include{structure} % could be results
 
 
+\ifthenelse{\boolean{HarvardCitations}}{%
+	\bibliographystyle{agsm} % used for Harvard style references. Names - Humanities & Interaction Design
+}{%
+	\bibliographystyle{ntnuthesis/ntnuthesis} %used for Vancover style references. Numbers - Computer Science & Physics
+}
 
-\bibliographystyle{ntnuthesis/ntnuthesis}
 \bibliography{MastersExample}
 
 \appendix
