@@ -170,6 +170,7 @@
 \def\thesis@authorC{}
 \def\thesis@supervisor{}
 \def\thesis@supervisorA{}
+\def\thesis@supervisorB{}
 \def\thesis@oppdragsgiver{}
 
 \def\thesis@juryA{}
@@ -203,6 +204,7 @@
 \def\setthesisauthorC#1{\def\thesis@authorC{#1}}
 \def\setthesissupervisor#1{\def\thesis@supervisor{#1}}
 \def\setthesissupervisorA#1{\def\thesis@supervisorA{#1}}
+\def\setthesissupervisorB#1{\def\thesis@supervisorB{#1}}
 \def\setnmtoppdragsgiver#1{\def\thesis@oppdragsgiver{#1}}
 
 \def\setthesisHostInstitution#1{\def\thesis@hostInstitution{#1}}
@@ -218,6 +220,7 @@
 \def\thesisauthor{\thesis@author}
 \def\thesissupervisor{\thesis@supervisor}
 \def\thesissupervisorA{\thesis@supervisorA}
+\def\thesissupervisorB{\thesis@supervisorB}
 
 
 
@@ -778,6 +781,8 @@ Use $\backslash$setthesisyear\{<year>\} to set year.
 		Supervisor 1: \thesis@supervisor 
 		
 		Supervisor 2: \thesis@supervisorA
+
+		Supervisor 3: \thesis@supervisorB
 		
   \end{titlepage}
 
@@ -838,7 +843,8 @@ Use $\backslash$setthesisyear\{<year>\} to set year.
     \vskip 1em
 	
 	{\fontsize{12}{14}\selectfont Academic Supervisor(s): \thesis@supervisor \\
-	\hspace*{50mm} \thesis@supervisorA}
+	\hspace*{50mm} \thesis@supervisorA \\
+	\hspace*{50mm} \thesis@supervisorB}
 	\vskip 1em
 	{\fontsize{12}{14}\selectfont Jury Committee:\hspace*{5mm} \thesis@juryA \\
 	\hspace*{40mm} \thesis@juryB\\
@@ -903,7 +909,8 @@ Use $\backslash$setthesisyear\{<year>\} to set year.
     \vskip 5em
 	
 	{\fontsize{12}{14}\selectfont Academic Supervisor(s): \thesis@supervisor \\
-	\hspace*{50mm} \thesis@supervisorA}
+	\hspace*{50mm} \thesis@supervisorA \\
+	\hspace*{50mm} \thesis@supervisorB}
 	\vskip 1em
 	{\fontsize{12}{14}\selectfont Jury Committee:\hspace*{5mm} \thesis@juryA \\
 	\hspace*{40mm} \thesis@juryB\\
@@ -990,6 +997,7 @@ Use $\backslash$setthesisyear\{<year>\} to set year.
 		& \thesis@authorC\\
 	Veiledere: & \thesis@supervisor\\
 		& \thesis@supervisorA\\
+		& \thesis@supervisorB\\
 		&\\
 	Oppdragsgiver: & \thesis@oppdragsgiver\\
 		&\\
@@ -1026,6 +1034,7 @@ Use $\backslash$setthesisyear\{<year>\} to set year.
 		& \thesis@authorC\\
 	Supervisor: & \thesis@supervisor\\
 		& \thesis@supervisorA\\
+		& \thesis@supervisorB\\
 		&\\
 	Employer: & \thesis@oppdragsgiver\\
 		&\\
