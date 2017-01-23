@@ -17,9 +17,11 @@ Due to limited \LaTeX\ support for the Georgia font, Charter has been
 chosen instead. For mathematical formula, the Euler fonts are used,
 since they blend more nicely with the Charter than the standard
 \LaTeX\ fonts: 
-$$
- f(x) = \int_0^x g(\tau)\,d\tau
-$$
+\begin{equation} \label{eq:1}
+    f(x) = \int_0^x g(\tau)\,d\tau
+\end{equation}
+
+
 
 For inline math you can use $\backslash{}($ and $\backslash{})$ for example \( f(x)= \frac{x^2}{1+x^2} \).  
 This also allows you to use $\slash$ and $\backslash$. You need to include the \{\} when you want the special
@@ -156,32 +158,23 @@ You may also want to use descriptive lists
 
 \section{Bibliographic References}
 
-There are two distinct styles of referencing which can be used within the Masters thesis, Vancover for Computer Science and Harvard for Interaction Design.
+There are two distinct styles of referencing which can be used within the Masters thesis, Vancouver for Computer Science and Harvard for Interaction Design.
 
-In Computer Science we generally use the Vancover style with numbered refernces.  
-You can note the \verb| \\usepackage[numbers]{natbib} |  near the beginning of the main tex file.
-Near the end there is the bibliography style file for NTNU named
-\texttt{ntnuthesis.bst} has been developed based upon the
-standard Bib\TeX\ \texttt{unsrt} style.
+In Computer Science we generally use the Vancouver style with numbered references.  
+I have added a boolean option \verb| \setboolean{HarvardCitations}{false} |  Havard style if false for computer science and true for interaction design.
  
 In the Vancover style you should cite articles~\cite{Askvall1985}, books~\cite{Card1983},
 anthologies~\cite{Lancaster1985} and web publications~\cite{Meldon1997}
 like this. For all citations note that in the text there is the tilde \~ character.  
 That is a non-breaking space which forces the number to stay with the text rather than move to the next line.
 There is always an issue referencing web pages. Currently
-we suggest that you use the HiG Website~\cite{HiG:Website}.
+we suggest that you use the NTNU Website~\cite{NTNU:Website}.
 
-For Harvard we you need to edit the document to have be
-\verb| \\usepackage{natbib} | Which can be done by uncommenting it in the main file.
-You will also need to change the 
-\verb| \\bibliographystyle{ntnuthesis/ntnuthesis} | to
-\verb| \\bibliographystyle{agsm} |
-The agsm is a bit different to the previous format and does not have the Webpage citation style, so you will need to change those to misc.
 
 For Harvard style referencing, you use the \texttt{citep} and \texttt{citet} style of citation. 
 These give parentheses around the citation or the name of the author as text with the year in parentheses.  
 If you want the citation to be read in a sentence then you use  \texttt{citet}. 
-If you want it to be just parentheitcal to the sentence at the end, then use \texttt{citep}.
+If you want it to be just parenthetical to the sentence at the end, then use \texttt{citep}.
 
 
 

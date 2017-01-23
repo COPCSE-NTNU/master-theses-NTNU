@@ -88,13 +88,15 @@
 %% MACRO
 \newcommand{\NTNU}{{N}orwegian {U}niversity of {S}cience and {T}echnology} %the extra {'s protect upper case
 \newcommand{\NTNUno}{{N}orges teknisk-naturvitenskapelige universitet}
+\newcommand{\NTNUgjovik}{{NTNU} i {G}j\o{}vik}
+\newcommand{\NTNUalesund}{{NTNU} i \AA{}lesund}
 
 
 
 %% IDENTIFICATION
 
-\xdef\ntnuthesisdate{2016/31/03}
-\xdef\ntnuthesisversion{2}
+\xdef\ntnuthesisdate{2017/01/22}
+\xdef\ntnuthesisversion{2.1}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{ntnuthesis/ntnuthesis}
   [\ntnuthesisdate\space
@@ -103,15 +105,7 @@
 
 %% CLASS FILE COMMANDS
 
-\newif\if@Bpaper
-
-\if@Bpaper
-	\LoadClass[b5paper,10pt]{report} 
-	\else
-	\LoadClass[a4paper,12pt]{report}
-\fi
-
-
+\LoadClassWithOptions{report} 
 
 
 
@@ -161,18 +155,18 @@
 \def\thesis@date{Use thesisdate to insert your date here.}
 \def\thesis@author{Use thesisauthor to insert your name here.}
 \def\thesis@hostInstitution{Use thesisHostInstitution to insert the location of the defense.}
-\def\thesis@campus{Trondheim by default}
+\def\thesis@campus{Gjovik by default}
 \def\thesis@publishertext{}
 
-% for bachelor theses with multiple authors
+% for theses with multiple authors
 \def\thesis@authorA{}
 \def\thesis@authorB{}
 \def\thesis@authorC{}
 \def\thesis@supervisor{}
 \def\thesis@supervisorA{}
 \def\thesis@supervisorB{}
-\def\thesis@oppdragsgiver{}
 
+%for the french thesis with know jury
 \def\thesis@juryA{}
 \def\thesis@juryB{}
 \def\thesis@juryC{}
@@ -255,8 +249,10 @@
     \hbox{}\thispagestyle{empty}\newpage\if@twocolumn\hbox{}\newpage\fi\fi\fi}
 
 \newif\if@masters
+\newif\if@DAIM
 \newif\if@CIMET
 \newif\if@MTDMT
+\newif\if@Bpaper
 
 
 
@@ -457,14 +453,9 @@ Use $\backslash$setthesisyear\{<year>\} to set year.
 \newcommand\nmt@firstpagetext{%
   \noindent Use this class with options\\
   ``MACS'' Masters in Applied Computer Science,\\
-  ``MIS'' Masters i Informasjonssikkerhet,\\
+  ``MIS'' Masters in Information Security,\\
   ``CIMET'' Erasmus mundus Masters in Colour Science,\\
-  ``MTDMT''  Masters in 3D Multimedia Technology,\\
-  ``BSP'' Bachelor i Spillprogrammering,\\
-  ``BRD'' Bachelor i drift av nettverk og datasystemer,\\
-  ``BIS'' Bachelor i Informasjonssikkerhet,\\
-  ``BPU'' Bachelor i Programvareutvikling, \\
-  ``BIND'' Bachelor i Ingeniørfad - data. 
+  ``MTDMT''  Masters in 3D Multimedia Technology
 }
 
 \newcommand\nmt@secondpagetext{%
@@ -472,12 +463,7 @@ Use $\backslash$setthesisyear\{<year>\} to set year.
   ``MACS'' Masters in Applied Computer Science,\\
   ``MIS'' Masters i Informasjonssikkerhet,\\
   ``CIMET'' Erasmus mundus Masters in Colour Science,\\
-  ``MTDMT''  Masters in 3D MultimMTDMTedia Technology,\\
-  ``BSP'' Bachelor i Spillprogrammering,\\
-  ``BRD'' Bachelor i drift av nettverk og datasystemer,\\
-  ``BIS'' Bachelor i Informasjonssikkerhet,\\
-  ``BPU'' Bachelor i Programvareutvikling, \\
-  ``BIND'' Bachelor i Ingeniør. 
+  ``MTDMT''  Masters in 3D MultimMTDMTedia Technology
 }
 
 	    
@@ -485,6 +471,14 @@ Use $\backslash$setthesisyear\{<year>\} to set year.
 
 
 %% OPTIONS (declare more here if needed)
+
+\DeclareOption{DAIM}{\@Bpapertrue \@twosidetrue  \@mparswitchtrue%
+	\geometry{b5paper, left=32mm,   right=18mm,  top=27mm, bottom=30mm, head=1.2cm, foot=2cm}
+	\@DAIMtrue
+}
+
+
+
 
 \DeclareOption{a4paper}{\@Bpaperfalse }
 \DeclareOption{b5paper}{\@Bpapertrue }
@@ -510,19 +504,56 @@ Use $\backslash$setthesisyear\{<year>\} to set year.
 \newif\if@norsk
 \newif\if@english
 
-\newcommand\nmt@UniNameText{%
-	Department of Computer Science and Media Technology\\
-	\NTNU, 
-}
+	\newcommand\nmt@DepartmentNameText{}
+	\newcommand\nmt@IDI{
+		Department of Computer Science\\
+		\NTNU, 
+		}
+	\newcommand\nmt@IIK{
+			Department of Information Security and Communication Technology\\
+		\NTNU, 
+		}
+	\newcommand\nmt@ID{
+			Department of Interaction Design\\
+		\NTNU, 
+		}
+	
+	\newcommand\nmt@DegreeNameText{}
+  \newcommand\nmt@MIXD{Master of Science in Interaction Design}
+  \newcommand\nmt@MACS{Master of Science in Applied Computer Science}
+  \newcommand\nmt@MIS{Master of Science in Information Security}
+  \newcommand\nmt@CIMET{Master In Colour science}
+  \newcommand\nmt@MTDMT{Masters in 3D Multimedia Technology}
+
+
 
 
 \DeclareOption{norsk}{
    \@norsktrue 
    \@englishfalse
-   \renewcommand\nmt@UniNameText{%
-	  	Avdeling for informatikk og medieteknikk\\
+
+	\renewcommand\nmt@IDI{%
+	   Institute for Datateknikk og Informatikk\\
 	 	\NTNUno, 
-   }  
+	}
+	\renewcommand\nmt@IIK{
+			Institutt for informasjonssikkerhet og kommunikasjonsteknologi\\
+		\NTNUno, 
+		}	
+	\renewcommand\nmt@ID{
+			Institutt for interaksjondesign\\
+		\NTNUno, 
+		}	
+
+	
+  \renewcommand\nmt@MIXD{Master i interaksjonsdesign}
+  \renewcommand\nmt@MACS{Master of Science in Applied Computer Science}
+  \renewcommand\nmt@MIS{Master i informasjonssikkerhet}
+  \renewcommand\nmt@CIMET{No Norwegian}
+  \renewcommand\nmt@MTDMT{No Norwegian}
+
+
+  
 }
 
 \DeclareOption{english}{
@@ -534,135 +565,36 @@ Use $\backslash$setthesisyear\{<year>\} to set year.
  \if@norsk
 \fi
 
-\DeclareOption{BSP}{%
-  \renewcommand\nmt@firstpagetext{%
-    \begin{tabular}{ccc}
-	Bacheloroppgave&&\\
-    	Bachelor i &Spill &Programmering\\
-    	20 &ECTS&\\
-    	Avdeling for& informatikk &og medieteknikk\\
-    	\NTNUno, &\nmt@frontpagesyear\\
-    \end{tabular}
-  }
-  \renewcommand\nmt@secondpagetext{\thesis@publishertext}
-}
 
-\DeclareOption{BRD}{%
-  \renewcommand\nmt@firstpagetext{%
-    \begin{tabular}{ccc}
-	Bacheloroppgave&&\\
-    	Bachelor i & drift av nettverk & og datasystemer \\
-    	20 &ECTS&\\
-    	Avdeling for& informatikk &og medieteknikk\\
-    	\NTNUno, &\nmt@frontpagesyear\\
-    \end{tabular}
-  }
-  \renewcommand\nmt@secondpagetext{\thesis@publishertext}
-}
-
-\DeclareOption{BIND}{%
-  \renewcommand\nmt@firstpagetext{%
-    \begin{tabular}{ccc}
-	Bacheloroppgave&&\\
-    	Bachelor i & ingeniørfag  data &  \\
-    	20 &ECTS&\\
-    	Avdeling for& informatikk &og medieteknikk\\
-    	\NTNUno, &\nmt@frontpagesyear\\
-    \end{tabular}
-  }
-  \renewcommand\nmt@secondpagetext{\thesis@publishertext}
-}
-
-\DeclareOption{BIS}{%
-  \renewcommand\nmt@firstpagetext{%
-    \begin{tabular}{ccc}
-	Bacheloroppgave&&\\
-    	Bachelor i & informasjonssikkerhet &  \\
-    	20 &ECTS&\\
-    	Avdeling for& informatikk &og medieteknikk\\
-    	\NTNUno, &\nmt@frontpagesyear\\
-    \end{tabular}
-  }
-  \renewcommand\nmt@secondpagetext{\thesis@publishertext}
-}
-
-\DeclareOption{BPU}{%
-
-  \renewcommand\nmt@firstpagetext{%
-    \begin{tabular}{ccc}
-	Bacheloroppgave&&\\
-    	Bachelor i & programvareutvikling &  \\
-    	20 &ECTS&\\
-    	Avdeling for& informatikk &og medieteknikk\\
-    	\NTNUno, &\nmt@frontpagesyear\\
-    \end{tabular}
-  }
-  \renewcommand\nmt@secondpagetext{\thesis@publishertext}
-}
-
-
-\DeclareOption{MIXD}{%
-  \@masterstrue
-  \if@norsk
-  	\renewcommand\nmt@firstpagetext{%
-  	  Masteroppgave\\
-  	  Master i interaksjonsdesign\\
-	   30 ECTS\\
-	  \nmt@UniNameText
- 	}
-  \else
-	\renewcommand\nmt@firstpagetext{%
-	   Master's Thesis\\
-	   Master of Science in Interaction Design\\
-	   30 ECTS\\
-	   \nmt@UniNameText
-	 }
-  \fi
-  \renewcommand\nmt@secondpagetext{\thesis@publishertext}
-}
 
 \DeclareOption{MACS}{%
-  \@masterstrue
-  \if@norsk
-  	\renewcommand\nmt@firstpagetext{%
-			\thesis@date\\
-  	  Masteroppgave\\
-  	  Master of Science in Applied Computer Science\\
-	   30 ECTS\\
-	  \nmt@UniNameText
- 	}
-  \else
-	\renewcommand\nmt@firstpagetext{%
-	   Master's Thesis\\
-	   Master of Science in Applied Computer Science\\
-	   30 ECTS\\
-	   \nmt@UniNameText
-	 }
-  \fi
-  \renewcommand\nmt@secondpagetext{\thesis@publishertext}
+  \renewcommand\nmt@DepartmentNameText{%
+    	\nmt@IDI
+			}
+  \renewcommand\nmt@DegreeNameText{%
+    	\nmt@MACS
+			}
 }
-
 
 \DeclareOption{MIS}{%
-  \@masterstrue
-  \if@norsk  
-	\renewcommand\nmt@firstpagetext{%
-    	  Masteroppgave\\
-    	  Master i informasjonssikkerhet\\
-	  30 ECTS\\
-	  \nmt@UniNameText \nmt@frontpagesyear 
-	}
-  \else
-	\renewcommand\nmt@firstpagetext{%
- 	  Master's Thesis\\
-    	  Master of Science in Information Security\\
-  	  30 ECTS\\
- 	  \nmt@UniNameText \nmt@frontpagesyear 
-	}
-  \fi
-  \renewcommand\nmt@secondpagetext{\thesis@publishertext}
-% \def@masters
+  \renewcommand\nmt@DepartmentNameText{%
+    	\nmt@IIK
+			}
+  \renewcommand\nmt@DegreeNameText{%
+    	\nmt@MIS
+			}
 }
+
+\DeclareOption{MIXD}{%
+  \renewcommand\nmt@DepartmentNameText{%
+    	\nmt@ID
+			}
+  \renewcommand\nmt@DegreeNameText{%
+    	\nmt@MIXD
+			}
+}
+
+
 
 \DeclareOption{CIMET}{
   \@masterstrue
@@ -703,6 +635,17 @@ Use $\backslash$setthesisyear\{<year>\} to set year.
   \renewcommand\nmt@secondpagetext{\thesis@publishertext}
 }
 
+
+	\renewcommand\nmt@firstpagetext{%
+	   Master's Thesis\\
+		 \nmt@DegreeNameText\\
+	   30 ECTS\\
+	   \nmt@DepartmentNameText\\
+	 }
+
+
+
+
 \ProcessOptions\relax
 
 
@@ -732,7 +675,9 @@ Use $\backslash$setthesisyear\{<year>\} to set year.
 
 %% FRONTPAGE GENERATION
 \newcommand\makefrontpages{%
-	\if@masters
+	\if@DAIM
+	 %No front page
+	\else
 	  \if@CIMET
 	     \makeCIMETfrontpages
 	   \else
@@ -742,8 +687,6 @@ Use $\backslash$setthesisyear\{<year>\} to set year.
 	        \makemastersfrontpages
 	     \fi
 	   \fi
-	\else
-	  \makebachelorfrontpages
 	\fi
 }
 
@@ -935,120 +878,3 @@ Use $\backslash$setthesisyear\{<year>\} to set year.
 }
 
 
-
-\newcommand\makebachelorfrontpages{%
-  \begin{titlepage}%
-    %\thispagestyle{empty}
-    %\setcounter{page}\z@
-    \hypersetup{pageanchor=false}
-
-    \let\footnotesize\small
-    \let\footnoterule\relax
-    \let \footnote \thanks
-    \vspace*{6.9mm}
-    {%
-    \fontsize{14}{16}\selectfont 
-    BACHELOROPPGAVE:\\
-	\par}
-    \hspace*{-5mm}
-{
-
-    \hspace{-5mm} \includegraphics[width=130mm,height=70mm]{ntnuthesis/greybackground} \\ %should be 127 and 67 but front cover wrong
-      \vskip -5.5cm % 7 gets to the top of the box
-      
-        \begin{tabular}[10cm]{p{0.5cm}p{10.2cm}l}%
-          &{\fontsize{14}{16}\selectfont \textbf{\thesis@title} \par} &\rule[-7cm]{0cm}{7cm}
-        \end{tabular}
-
-\par}
-   \fontsize{14}{16}\selectfont 
-   FORFATTERE:\\
-   \begin{tabular}[10cm]{p{1.5cm}l}%
-          \rule[-4cm]{0cm}{4cm}&{\fontsize{14}{16}\selectfont 
-          \parbox{6cm}{\thesis@author \\
-          \thesis@authorA \\
-          \thesis@authorB \\
-          \thesis@authorC \\
-          
-          } 
-          \par}
-        \end{tabular}\par
-  DATO: \\
-  \hspace*{21.5mm}{\fontsize{14}{16}\selectfont {\nmt@frontpagesyear} \par}
-  \end{titlepage}
-
- \cleardoublepage
-  
-  \newpage
-  {%
-    \fontsize{14}{16}\selectfont 
-    Sammendrag av Bacheloroppgaven\\
-	\par}
-%\addcontentsline{toc}{chapter}{Summary}
-%\thispagestyle{empty}
-\begin{tabular}{p{0.35\textwidth}@{  }p{0.65\textwidth}}
-	Tittel: & \textbf{\thesis@titleNOR}\\
-		&\\
-	Dato: & \nmt@frontpagesyear\\
-		&\\
-	Deltakere: & \thesis@author\\
-		& \thesis@authorA\\
-		& \thesis@authorB\\
-		& \thesis@authorC\\
-	Veiledere: & \thesis@supervisor\\
-		& \thesis@supervisorA\\
-		& \thesis@supervisorB\\
-		&\\
-	Oppdragsgiver: & \thesis@oppdragsgiver\\
-		&\\
-	Kontaktperson: & \nmt@contact\\
-		&\\
-	N\o{}kkelord: & \nmt@keywordsNOR\\
-	Antall sider: & \pageref{LastPage}\\
-	Antall vedlegg: & \nmt@appnumber\\
-	Tilgjengelighet: & \AA{}pen\\ % this needs updating \nmt@pubNOR}\\
-		&\\
-	\hline\\
-	Sammendrag: & \nmt@descNOR\\
-  \end{tabular}
-
-% this should be a function call so that the layout is done in a single place. 
-%This is currently bad coding but I do not have time to fix it at the moment.  Can be fixed this later.
-\cleardoublepage
-  
-  \newpage
-  {%
-    \fontsize{14}{16}\selectfont 
-    Summary of Graduate Project\\
-	\par}
-%\addcontentsline{toc}{chapter}{Summary}
-%\thispagestyle{empty}
-\begin{tabular}{p{0.35\textwidth}@{  }p{0.65\textwidth}}
-	Title: & \textbf{\thesis@title}\\
-		&\\
-	Date: & \nmt@frontpagesyear\\
-		&\\
-	Participants: & \thesis@author\\
-		& \thesis@authorA\\
-		& \thesis@authorB\\
-		& \thesis@authorC\\
-	Supervisor: & \thesis@supervisor\\
-		& \thesis@supervisorA\\
-		& \thesis@supervisorB\\
-		&\\
-	Employer: & \thesis@oppdragsgiver\\
-		&\\
-	Contact Person: & \nmt@contact\\
-		&\\
-	Keywords: & \nmt@keywords\\
-	Pages: & \pageref{LastPage}\\
-	Attachments: & \nmt@appnumber\\
-	Availability: & Open\\ % this needs updating to use \nmt@pub}\\
-		&\\
-	\hline\\
-	Abstract: & \nmt@desc\\
-\end{tabular}
-
-		\hypersetup{pageanchor=true}
-
-}

@@ -4,11 +4,20 @@
 %% Use short name MACS, MIS, CIMET, MTDMT, MIXD or MIS  
 %% Language english or norsk
 %% b5paper with oneside or twoside, you can set A4 if you want but you submit in b5
-\documentclass[MIXD,norsk,b5paper,oneside]{ntnuthesis/ntnuthesis}
+
+%% If you want print with the heading material on a4 paper you can use this format
+%% \documentclass[MACS,english,a4paper,oneside,12pt]{ntnuthesis/ntnuthesis}
+
+%% with the change to using DAIM we have a new option.
+\documentclass[MACS,english,DAIM]{ntnuthesis/ntnuthesis}
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}     % For utf8 encoded .tex files allows norwegian characters in the files. This can be dangerous if you change to a differnt editor.
-\usepackage[pdftex]{graphicx, hyperref}   % For cross references in pdf
+%\usepackage[pdftex]{graphicx, hyperref}   % For cross references in pdf
+\usepackage{graphicx}
+\usepackage{hyperref}   % For cross references in pdf
+
+
 \usepackage{color}              % For colouring text 
 \hypersetup{colorlinks=true,     
 		linkcolor=blue,          % color of internal links (change box color with linkbordercolor)
@@ -21,7 +30,7 @@
 
 % Set to true ONLY if using Harvard citation style
 \newboolean{HarvardCitations}
-\setboolean{HarvardCitations}{true} % false for computer science, true for interaction design and harvard style
+\setboolean{HarvardCitations}{false} % false for computer science, true for interaction design and harvard style
 
 
 \ifthenelse{\boolean{HarvardCitations}}{%
@@ -34,7 +43,7 @@
 
 \begin{document}
 
-\input{MastersThesisData} % this is the file which contains all the details about your thesis
+\input{DaimData} % this is the file which contains all the details about your thesis
 \makefrontpages % make the frontpages
 \input{MastersIntro}
 
