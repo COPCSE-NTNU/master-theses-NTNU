@@ -8,7 +8,7 @@
 %% If you want print with the heading material on a4 paper you can use this format
 %% \documentclass[MACS,english,a4paper,oneside,12pt]{ntnuthesis/ntnuthesis}
 
-%% with the change to using DAIM we have a new option.
+%% with the change to using DAIM we have a new option. include DAIM after english below removes the front page material so that you can then submit in the DAIM system. If you are wanting the front material remove DAIM and make sure you fill in the DaimData.tex file.
 \documentclass[MACS,english,DAIM]{ntnuthesis/ntnuthesis}
 
 \usepackage[T1]{fontenc}
@@ -27,6 +27,20 @@
 		}
 \usepackage{csvsimple}  % for simple table reading and display
 \usepackage{url}
+\usepackage{booktabs}
+
+% code listing colors and settings.
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+\definecolor{darkred}{rgb}{0.5,0.0,0}
+\lstset{        basicstyle=\ttfamily,
+                keywordstyle=\color{blue}\ttfamily,
+                stringstyle=\color{darkred}\ttfamily,
+                commentstyle=\color{darkgreen}\ttfamily,
+}
+
+
+
+
 
 % Set to true ONLY if using Harvard citation style
 \newboolean{HarvardCitations}
@@ -38,6 +52,8 @@
 }{%
 	\usepackage[numbers]{natbib} % for Vancover numbers in bibliography
 }
+
+\newcommand{\q}[1]{\leavevmode\marginpar{\small\em #1}}
 
 
 
@@ -57,7 +73,7 @@
 
 
 \include{introduction} % includes latex files from the same directory
-\include{packages} % could be called Methodology or methods or anyfile name 
+\include{packages} % could be called Methodology or methods or any filename 
 \include{structure} % could be results
 
 \include{conclusion}

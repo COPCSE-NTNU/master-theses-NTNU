@@ -120,6 +120,7 @@
 \RequirePackage{lastpage}
 \RequirePackage{babel}
 \RequirePackage{enumitem}
+\RequirePackage{listings}
 \setlist[enumerate]{itemsep=0mm, topsep=5pt, partopsep=0mm, parsep=0mm}
 \setlist[enumerate,1]{label=\arabic*., ref=\arabic*}
 \setlist[enumerate,2]{label=\arabic*., ref=\arabic*}
@@ -488,7 +489,7 @@ Use $\backslash$setthesisyear\{<year>\} to set year.
 	\if@Bpaper{
 		\geometry{b5paper, left=25mm,   right=25mm,  top=27mm, bottom=30mm, head=1.2cm, foot=2cm}}
 	\else{
-		\geometry{a4paper, left=3.75cm, right=3.75cm, top=3cm, bottom=4cm, head=1.2cm, foot=2cm}}
+		\geometry{a4paper, left=3.75cm, right=3.75cm, top=3cm, bottom=4cm, head=1.2cm, foot=2cm, marginpar=2.75cm}}
 	\fi
 	}
 	

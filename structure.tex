@@ -1,10 +1,9 @@
 \chapter{Structural Elements}
 \label{chap:structural}
 
-The title of the thesis should be set using the \verb+\thesistitle+
+If you are submitting using the DAIM system you should make sure the pdf you submit does not have the front page information, as that will be added by the submission form in DAIM.  You can remove the DAIM option to print the front page material if you want a full PDF with the front page material. To make sure the running header has the title of the thesis you still need to set it in the \verb+DaimData.tex+ file. The title of the thesis should be set using the \verb+\thesistitle+
 command, and the date of the thesis should be set using the
-\verb+\thesisdate+ command. This makes the title and date appear in
-the running header, like in this document.
+\verb+\thesisdate+ command in the \verb+DaimData.tex+ file. 
 
 \section{Page Layout}
 
@@ -176,6 +175,70 @@ These give parentheses around the citation or the name of the author as text wit
 If you want the citation to be read in a sentence then you use  \texttt{citet}. 
 If you want it to be just parenthetical to the sentence at the end, then use \texttt{citep}.
 
+\section{Code}
 
+For code listing (see Figure~\ref{fig:HelloWorldC++} and Figure~\ref{fig:PythonCode}) we have included the listings package so that you can easily include formatted code.  It does not have code highlighting but it retains the structure of the code.  For more documentation on listings on wikibooks \footnote{\url{https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings}}
+
+
+\begin{figure}[tp] 
+  \centering
+\lstset{language=C++,
+        morecomment=[l][\color{darkgreen}]{\#}}
+\begin{lstlisting}
+    #include<stdio.h>
+    #include<iostream>
+    // A comment
+    int main(void)
+    {
+    printf("Hello World\n");
+    return 0;
+    }
+\end{lstlisting}
+  \caption[Hello World C++]{The code listing for Hello World in C++, with colour syntax highlighting.}
+  \label{fig:HelloWorldC++}
+\end{figure}
+
+You could also use Python code listings by changing the language of the code block
+
+\begin{figure}[tp] 
+  \centering
+\lstset{language=Python}
+\begin{lstlisting}
+import numpy as np
+x = 1
+a = np.array([[1.0, 2.0], [3.0, 4.0]])
+if x == 1:
+    # indented four spaces
+    print("x is 1.")
+    print("Hello World")
+    print(a)
+\end{lstlisting}
+  \caption[Python code example]{The code listing for a Python increment a matrix example}
+  \label{fig:PythonCode}
+\end{figure}
+
+\section{Statistical Analysis}
+
+Many of you will need to use statistics to reject null hypotheses.  There are many statistical packages and ways of analysing data.  Your supervisor should be able to direct you to the type of analytically tool that will allow you to make justifiable claims.
+
+There are some key things to remember.  If you want to make a claim that thing A is better than thing B, then you are rejecting the null hypothesis that they are the same. Equation~\ref{H0mean} states the null hypothesis as the mean of sample 1 ($\mu_1$) is the same as the mean of sample 2 ($\mu_2$). For example if you were measuring height of men and women you would state that the null hypothesis is that men and women are the same height, then you measure 100 men and 100 women and calculate the mean and standard variation of their height. 
+\begin{equation} 
+\label{H0mean}
+    H_0 : \mu_1 = \mu_2
+\end{equation}
+
+The t-test can be used to see what the probability $p$ of seeing the values in the sample that you coming from the same actual population. If you have a $p<0.05$ you have a 95\% probability that the samples are actually different.
+
+Thus you set up the evaluation and show that there is a very low probability that the difference you see is caused by sampling error and therefor they are not the same.  The t-test does this for normally distributed scalar values of data. If you are using a Likert Scale then you do not have scalar data, and it may not be normally distributed.
+
+For non-parametric data you need to make a statement about the sampled values~\cite{Kaptein2010}
+\begin{equation} 
+\label{H0sample}
+    H_0 : \phi_1(x) = \phi_2(x)
+\end{equation}
+
+There are lots of good sources for understanding statistics for research.  Most of the wikipedia pages are a good entry to the area. For Likert scale analysis there are new tools~\cite{Kaptein2010} which allow for better assessment of the sample sizes we have in most of our Masters thesis projects.
+
+You should also think about learning R the statisical package for doing analysis.  You can download it by searching for "R on windows" or using the link to a windows implementation of R\footnote{\url{https://cran.r-project.org/bin/windows/base/}}
 
 
