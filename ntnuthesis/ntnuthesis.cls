@@ -153,6 +153,7 @@
 % Header and footer
 
 \def\thesis@title{Use thesistitle to insert your title here.}
+\def\thesis@shorttitle{Use thesisshorttitle to insert your short title here.}
 \def\thesis@date{Use thesisdate to insert your date here.}
 \def\thesis@author{Use thesisauthor to insert your name here.}
 \def\thesis@hostInstitution{Use thesisHostInstitution to insert the location of the defense.}
@@ -178,7 +179,7 @@
 \def\nmt@desc{}
 \def\nmt@pub{}
 
-\def\thesis@titleNOR{Use thesistitleNor to insert your title here.}
+\def\thesis@titleNOR{Use thesistitleNor to insert your Norwegian title here.}
 \def\nmt@keywordsNOR{}
 \def\nmt@descNOR{}
 \def\nmt@pubNOR{}
@@ -188,7 +189,8 @@
 \def\nmt@appnumber{}
 \def\nmt@pagecount{}
 
-\def\setthesistitle#1{\def\thesis@title{#1}}
+\def\setthesistitle#1{\def\thesis@title{#1\def\thesis@shorttitle{#1}}}
+\def\setthesisshorttitle#1{\def\thesis@shorttitle{#1}}
 \def\setthesisdate#1{\def\thesis@date{#1}}
 %\def\setthesisyear#1{\def\thesis@year{#1}}
 
@@ -240,9 +242,9 @@
 \def\ps@ntnuheadings{%
   \def\@oddfoot{\reset@font\hfil\thepage\hfil}
   \def\@oddhead{\underline{\hbox
-      to\hsize{\fontsize{7}{9}\selectfont\hfil\thesis@title}}}
+      to\hsize{\fontsize{7}{9}\selectfont\hfil\thesis@shorttitle}}}
   \def\@evenhead{\underline{\hbox
-      to\hsize{\fontsize{7}{9}\selectfont\thesis@title\hfil}}}
+      to\hsize{\fontsize{7}{9}\selectfont\thesis@shorttitle\hfil}}}
   \let\@evenfoot=\@oddfoot}
 \pagestyle{ntnuheadings}
 % Empty page does not have header or footer
