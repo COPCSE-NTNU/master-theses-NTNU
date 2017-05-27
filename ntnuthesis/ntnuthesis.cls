@@ -189,7 +189,7 @@
 \def\nmt@appnumber{}
 \def\nmt@pagecount{}
 
-\def\setthesistitle#1{\def\thesis@title{#1\def\thesis@shorttitle{#1}}}
+\def\setthesistitle#1{\def\thesis@title{#1}\def\thesis@shorttitle{#1}}
 \def\setthesisshorttitle#1{\def\thesis@shorttitle{#1}}
 \def\setthesisdate#1{\def\thesis@date{#1}}
 %\def\setthesisyear#1{\def\thesis@year{#1}}
