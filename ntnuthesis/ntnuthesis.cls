@@ -161,12 +161,19 @@
 \def\thesis@publishertext{}
 
 % for theses with multiple authors
-\def\thesis@authorA{}
-\def\thesis@authorB{}
-\def\thesis@authorC{}
+%\def\thesis@authorA{}
+%\def\thesis@authorB{}
+%\def\thesis@authorC{}
 \def\thesis@supervisor{}
-\def\thesis@supervisorA{}
-\def\thesis@supervisorB{}
+%\def\thesis@supervisorA{}
+
+\newif\if@supervisorA    \@supervisorAfalse
+\def\setthesissupervisorA#1{\gdef\@supervisorA{#1} \@supervisorAtrue }
+
+\newif\if@supervisorB    \@supervisorBfalse
+\def\setthesissupervisorB#1{\gdef\@supervisorB{#1} \@supervisorBtrue }
+
+%\def\thesis@supervisorB{}
 
 %for the french thesis with know jury
 \def\thesis@juryA{}
@@ -200,8 +207,8 @@
 \def\setthesisauthorB#1{\def\thesis@authorB{#1}}
 \def\setthesisauthorC#1{\def\thesis@authorC{#1}}
 \def\setthesissupervisor#1{\def\thesis@supervisor{#1}}
-\def\setthesissupervisorA#1{\def\thesis@supervisorA{#1}}
-\def\setthesissupervisorB#1{\def\thesis@supervisorB{#1}}
+%\def\setthesissupervisorA#1{\def\thesis@supervisorA{#1}}
+%\def\setthesissupervisorB#1{\def\thesis@supervisorB{#1}}
 \def\setnmtoppdragsgiver#1{\def\thesis@oppdragsgiver{#1}}
 
 \def\setthesisHostInstitution#1{\def\thesis@hostInstitution{#1}}
@@ -216,8 +223,8 @@
 \def\thesisyear{\thesis@year}
 \def\thesisauthor{\thesis@author}
 \def\thesissupervisor{\thesis@supervisor}
-\def\thesissupervisorA{\thesis@supervisorA}
-\def\thesissupervisorB{\thesis@supervisorB}
+%\def\thesissupervisorA{\thesis@supervisorA}
+%\def\thesissupervisorB{\thesis@supervisorB}
 
 
 
@@ -724,11 +731,11 @@ Use $\backslash$setthesisyear\{<year>\} to set year.
     \end{center}	
 		\vspace*{\fill}
 		
-		Supervisor 1: \thesis@supervisor 
+		Supervisor: \thesis@supervisor 
 		
-		Supervisor 2: \thesis@supervisorA
+		\if@supervisorA Co-Supervisor: \@supervisorA \fi
 
-		Supervisor 3: \thesis@supervisorB
+		\if@supervisorB Co-Supervisor: \@supervisorB \fi
 		
   \end{titlepage}
 
