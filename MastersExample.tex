@@ -28,15 +28,34 @@
 \usepackage{csvsimple}  % for simple table reading and display
 \usepackage{url}
 \usepackage{booktabs}
+%\usepackage{gnuplottex} %miktex option if using miktex on windows
 
-% code listing colors and settings.
+
 \definecolor{darkgreen}{rgb}{0,0.5,0}
 \definecolor{darkred}{rgb}{0.5,0.0,0}
+
 \lstset{        basicstyle=\ttfamily,
                 keywordstyle=\color{blue}\ttfamily,
                 stringstyle=\color{darkred}\ttfamily,
                 commentstyle=\color{darkgreen}\ttfamily,
 }
+
+
+%Typesetting of C++ but not always stable in titles etc...
+\newcommand{\CPP}[0]{{C\nolinebreak[4]\hspace{-.1em}\raisebox{.1ex}{\small\bf +\hspace{-.1em}+\ }}}
+
+\newcommand{\com}[1]{{\color{red}#1}} % supervisor comment
+%\renewcommand{\com}[1]{} %remove starting % to remove supervisor comments
+% This will appear in text \com{Lecuters comment} and be visible unless you uncomment
+% the renewcommand line.
+
+\newcommand{\todo}[1]{{\color{green}#1}} % items to do
+%\renewcommand{\todo}[1]{} %remove starting % to remove items to do
+
+\newcommand{\n}[1]{{\color{blue}#1}} % other comment
+%\renewcommand{\n}[1]{} %remove starting % to remove notes
+
+\newcommand{\dn}[1]{} % add the d to a note to say that you have finished with it.
 
 
 
@@ -59,9 +78,9 @@
 
 \begin{document}
 
-\input{DaimData} % this is the file which contains all the details about your thesis
+\input{inc/DaimData} % this is the file which contains all the details about your thesis
 \makefrontpages % make the frontpages
-\input{MastersIntro}
+\input{inc/MastersIntro}
 
 \tableofcontents
 
@@ -72,11 +91,12 @@
 \listoftables
 
 
-\include{introduction} % includes latex files from the same directory
-\include{packages} % could be called Methodology or methods or any filename 
-\include{structure} % could be results
-
-\include{conclusion}
+\include{inc/introduction} % includes latex files from the same directory
+\include{inc/packages} % could be called Methodology or methods or any filename 
+\include{inc/structure} % could be results
+\include{inc/implementation}
+\include{inc/discussion}
+\include{inc/conclusion}
 
 \ifthenelse{\boolean{HarvardCitations}}{%
 	\bibliographystyle{agsm} % used for Harvard style references. Names - Humanities & Interaction Design
@@ -87,6 +107,7 @@
 \bibliography{MastersExample}
 
 \appendix
-\include{appendix}
+\include{inc/appendix}
+%\include{inc/timetable}
 
 \end{document}
