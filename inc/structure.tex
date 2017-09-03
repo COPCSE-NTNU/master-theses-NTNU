@@ -107,21 +107,23 @@ There are many ways to include graphs in your document.  Figure~\ref{fig:exgnupl
   \label{fig:exgnuplotex}
 \end{figure}
 
-%\begin{figure}[htp]  %t top, b bottom, p page | you can also use h to try to get the figure to appear at the current location
-%  \centering
-%    \begin{gnuplot}[terminal=epslatex, terminaloptions=color]
-%        set xlabel "Age" 
-%        set ylabel "IQ" 
-%        set title "Age vs Average IQ"
-%        set yrange [0:160]
-%        plot "figures/ageiq.csv" with bars
-%    \end{gnuplot}
-%  \caption[An example of Integrated Graph]{This is a gnuplot graph read from a file}
-%  \label{fig:exgnuplotintegratefile}
-%\end{figure}
+\begin{figure}[htp]  %t top, b bottom, p page | you can also use h to try to get the figure to appear at the current location
+  \centering
+    \begin{gnuplot}[terminal=epslatex, terminaloptions=color]
+        set xlabel "Age" 
+        set ylabel "IQ" 
+        set key autotitle columnhead
+        set title "Age vs Average IQ"
+        set yrange [0:160]
+        set datafile separator ","
+        plot "figures/ageiq.csv" using 1:2 with boxes 
+    \end{gnuplot}
+  \caption[An example of Integrated Graph]{This is a gnuplot graph read from a file}
+  \label{fig:exgnuplotintegratefile}
+\end{figure}
 
 
-%\begin{figure}[htp]  %t top, b bottom, p page | you can also use h to try to get the figure to appear at the current location
+%\begin{figure}[htp]  %t top, b bottom, p page | you can also use h to try to get the figure to appear at the urrent location
 %  \centering
 %    \begin{gnuplot}[terminal=pdf, terminaloptions=color]
 %        unset hidden3d
