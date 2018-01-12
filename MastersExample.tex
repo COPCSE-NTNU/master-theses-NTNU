@@ -9,7 +9,7 @@
 %% \documentclass[MACS,english,a4paper,oneside,12pt]{ntnuthesis/ntnuthesis}
 
 %% with the change to using DAIM we have a new option. include DAIM after english below removes the front page material so that you can then submit in the DAIM system. If you are wanting the front material remove DAIM and make sure you fill in the DaimData.tex file.
-\documentclass[MACS,english,DAIM]{ntnuthesis/ntnuthesis}
+\documentclass[MACS,english]{ntnuthesis/ntnuthesis}
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}     % For utf8 encoded .tex files allows norwegian characters in the files. This can be dangerous if you change to a differnt editor.
@@ -29,6 +29,7 @@
 \usepackage{url}
 \usepackage{booktabs}
 \usepackage{gnuplottex} %miktex option if using miktex on windows
+\usepackage{rotating}
 
 
 \definecolor{darkgreen}{rgb}{0,0.5,0}
@@ -43,6 +44,19 @@
 
 %Typesetting of C++ but not always stable in titles etc...
 \newcommand{\CPP}[0]{{C\nolinebreak[4]\hspace{-.1em}\raisebox{.1ex}{\small\bf +\hspace{-.1em}+\ }}}
+
+%\usepackage[table]{xcolor}% http://ctan.org/pkg/xcolor
+%\usepackage[nomessages]{fp}
+%\newlength{\maxbarlen}
+
+
+\newcommand\databar[3][gray!20]{%
+  \FPeval\result{round(#3/#2:4)}%
+  \rlap{\textcolor{#1}{\hspace*{\dimexpr-\tabcolsep+.5\arrayrulewidth}%
+        \rule[-.05\ht\strutbox]{\result\maxbarlen}{.95\ht\strutbox}}}%
+  \makebox[\dimexpr\maxbarlen-2\tabcolsep+\arrayrulewidth][r]{#3}}
+
+
 
 \newcommand{\com}[1]{{\color{red}#1}} % supervisor comment
 %\renewcommand{\com}[1]{} %remove starting % to remove supervisor comments
