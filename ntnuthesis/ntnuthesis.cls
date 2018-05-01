@@ -116,7 +116,7 @@
 \RequirePackage{geometry}
 \RequirePackage[T1]{fontenc}
 \RequirePackage{charter}
-\RequirePackage{euler}
+%\RequirePackage{euler}
 \RequirePackage{lastpage}
 \RequirePackage{babel}
 \RequirePackage{enumitem}
