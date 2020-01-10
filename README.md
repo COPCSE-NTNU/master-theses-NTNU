@@ -1,6 +1,7 @@
-# SUPERCEDED by theses-NTNU
+# WARNING -- this project is deprecated
 
-This project has been deprecated and superceded by [the new, combined (BSc/MSc/Phd) thesis template](https://github.com/COPCSE-NTNU/thesis-NTNU). Use the new template instead of this one.
+This project has been **deprecated and superseded** by [the new, combined (BSc/MSc/Phd) thesis template](https://github.com/COPCSE-NTNU/thesis-NTNU). Use the new template instead of this one.
+
 
 
 # Master Theses at NTNU
